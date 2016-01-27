@@ -1,4 +1,4 @@
-(defproject barcode "0.1.0"
+(defproject barcode "0.1.0-SNAPSHOT"
   :description "Barcode generator based on gnu-barcode"
   :url "http://github.com/batsuev/"
   :license {:name "Eclipse Public License"
