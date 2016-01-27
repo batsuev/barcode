@@ -1,10 +1,12 @@
 # barcode
 
+[![Clojars Project](https://img.shields.io/clojars/v/barcode.svg)](https://clojars.org/barcode)
 A Clojure library for drawing barcodes based on gnu-barcode (using JNI) and php-barode.
 
 ## Installation
 lein dependency:
-[![Clojars Project](https://img.shields.io/clojars/v/barcode.svg)](https://clojars.org/barcode)
+
+    [batsuev/barcode "0.1.0"]
     
 project.clj:
 
