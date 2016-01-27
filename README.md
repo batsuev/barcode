@@ -4,8 +4,7 @@ A Clojure library for drawing barcodes based on gnu-barcode (using JNI) and php-
 
 ## Installation
 lein dependency:
-
-    [barcode "0.1.0-SNAPSHOT"]
+[![Clojars Project](https://img.shields.io/clojars/v/barcode.svg)](https://clojars.org/barcode)
     
 project.clj:
 
