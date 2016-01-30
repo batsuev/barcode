@@ -32,17 +32,21 @@
 
 (defn get-info-ean [code encoding]
   (let [res (ean/encode code encoding)]
-    (BarCodeResponse. (:encoding res)
-                      (:text res)
-                      (:bars res))))
+    (doto (BarCodeResponse.)
+      (.setEncoding (:encoding res))
+      (.setTextInfo (:text res))
+      (.setPartial (:bars res)))))
 
 (defn get-info-gnu-barcode [code encoding]
-  (let [code code
+  (let [info (BarCodeResponse.)
+        code code
         encoding (-> encoding
                      (or "any")
                      (clojure.string/replace #"[|\\]" "_")
                      clojure.string/upper-case)]
-    (BarCode/Create code encoding)))
+    (BarCode/load)
+    (BarCode/Create code encoding info)
+    info))
 
 (defn get-info [code encoding]
   (if (is-ean-encoding code encoding)

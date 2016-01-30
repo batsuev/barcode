@@ -5,11 +5,11 @@ public class BarCodeResponse {
     private String textInfo;
     private String partial;
 
-    public BarCodeResponse(String encoding, String textInfo, String partial) {
-        this.encoding = encoding;
-        this.textInfo = textInfo;
-        this.partial = partial;
-    }
+    public BarCodeResponse() {}
+
+    public void setEncoding(String val) { this.encoding = new String(val); }
+    public void setTextInfo(String val) { this.textInfo = new String(val); }
+    public void setPartial(String val) { this.partial = new String(val); }
 
     public String getEncoding() { return this.encoding; }
     public String getTextInfo() { return this.textInfo; }

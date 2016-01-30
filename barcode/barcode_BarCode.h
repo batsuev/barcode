@@ -8,8 +8,7 @@
 extern "C" {
 #endif
 
-JNIEXPORT jobject JNICALL Java_barcode_BarCode_Create
-  (JNIEnv *, jobject, jstring, jstring);
+  JNIEXPORT void JNICALL Java_barcode_BarCode_Create(JNIEnv *, jobject, jstring, jstring, jobject);
 
 #ifdef __cplusplus
 }

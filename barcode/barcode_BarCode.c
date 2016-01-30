@@ -8,8 +8,8 @@
 #define strcasecmp stricmp
 #endif
 
-JNIEXPORT jobject JNICALL Java_barcode_BarCode_Create
-(JNIEnv *env, jobject jobj, jstring code, jstring encoding)
+JNIEXPORT void JNICALL Java_barcode_BarCode_Create
+(JNIEnv *env, jobject jobj, jstring code, jstring encoding, jobject response)
 {
   const char *codeStr = (*env)->GetStringUTFChars(env, code, NULL);
   const char *encodingStr = (*env)->GetStringUTFChars(env, encoding, NULL);
@@ -42,12 +42,15 @@ JNIEXPORT jobject JNICALL Java_barcode_BarCode_Create
   jstring textInfoE = (*env)->NewStringUTF(env, bc->textinfo);
   jstring partialF = (*env)->NewStringUTF(env, bc->partial);
 
-  jclass respClass = (*env)->FindClass(env, "barcode/BarCodeResponse");
-  jmethodID ctor = (*env)->GetMethodID(env, respClass, "<init>", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V");
-  jobject instance = (*env)->NewObject(env, respClass, ctor, encodingE, textInfoE, partialF);
+  jclass respClass = (*env)->GetObjectClass(env, response);
+  jmethodID setEnc = (*env)->GetMethodID(env, respClass, "setEncoding", "(Ljava/lang/String;)V");
+  jmethodID setText = (*env)->GetMethodID(env, respClass, "setTextInfo", "(Ljava/lang/String;)V");
+  jmethodID setPartial = (*env)->GetMethodID(env, respClass, "setPartial", "(Ljava/lang/String;)V");
+
+  (*env)->CallVoidMethod(env, response, setEnc, encodingE);
+  (*env)->CallVoidMethod(env, response, setText, textInfoE);
+  (*env)->CallVoidMethod(env, response, setPartial, partialF);
 
   (*env)->ReleaseStringUTFChars(env, code, codeStr);
   (*env)->ReleaseStringUTFChars(env, encoding, encodingStr);
-
-  return instance;
 }

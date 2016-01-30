@@ -1,9 +1,9 @@
 package barcode;
 
 public class BarCode {
-    public static native BarCodeResponse Create(String code, String encoding);
+    public static native void Create(String code, String encoding, BarCodeResponse res);
 
-    static {
+    public static void load() {
         System.load(System.getProperty("barcode.so"));
     }
 }
