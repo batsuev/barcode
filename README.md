@@ -1,6 +1,6 @@
+[![Clojars Project](https://img.shields.io/clojars/v/barcode.svg)](https://clojars.org/barcode)
 # barcode
 
-[![Clojars Project](https://img.shields.io/clojars/v/barcode.svg)](https://clojars.org/barcode)
 A Clojure library for drawing barcodes based on gnu-barcode (using JNI) and php-barode.
 
 ## Installation
