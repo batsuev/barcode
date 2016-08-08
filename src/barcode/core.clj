@@ -37,6 +37,9 @@
       (.setTextInfo (:text res))
       (.setPartial (:bars res)))))
 
+(defn setup []
+  (BarCode/load))
+
 (defn get-info-gnu-barcode [code encoding]
   (let [info (BarCodeResponse.)
         code code
@@ -44,7 +47,6 @@
                      (or "any")
                      (clojure.string/replace #"[|\\]" "_")
                      clojure.string/upper-case)]
-    (BarCode/load)
     (BarCode/Create code encoding info)
     info))
 

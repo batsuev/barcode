@@ -25,6 +25,7 @@ project.clj:
       
     (defn- show-barcode [request]
       (let [code (-> request :params (get "code"))]
+        (barcode/setup)
         (barcode/generate code "ANY" 2 "png")))
     
     (defroutes app-routes
@@ -35,7 +36,8 @@ project.clj:
     (ns your-project
       (:require [barcode.core :as barcode]
                 [clojure.java.io :as io]))
-                
+    
+    (barcode/setup)
     (io/copy (:body (barcode/generate "123456" "ANY" 2 "png")) (io/file "test.png"))
 
 ## License
