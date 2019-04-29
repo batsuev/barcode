@@ -53,4 +53,6 @@ JNIEXPORT void JNICALL Java_barcode_BarCode_Create
 
   (*env)->ReleaseStringUTFChars(env, code, codeStr);
   (*env)->ReleaseStringUTFChars(env, encoding, encodingStr);
+	
+  Barcode_Delete(bc);
 }
